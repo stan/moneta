@@ -12,7 +12,7 @@ module Moneta
     def initialize(options = {})
       options = {
         :host => 'localhost',
-        :port => "6666",
+        :port => 6666,
         :db => 'cache'
       }.update(options)
       @cache = VoldemortClient.new(options[:db], "#{options[:host]}:#{options[:port]}")

@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{stan-moneta}
-  s.version = "0.6.0.1"
+  s.version = "0.6.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Yehuda Katz"]
@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.description = %q{A unified interface to key/value stores}
   s.email = %q{wycats@gmail.com}
   s.extra_rdoc_files = ["README", "LICENSE", "TODO"]
-  s.files = ["LICENSE", "README", "Rakefile", "TODO", "lib/moneta", "lib/moneta/basic_file.rb", "lib/moneta/berkeley.rb", "lib/moneta/couch.rb", "lib/moneta/datamapper.rb", "lib/moneta/file.rb", "lib/moneta/lmc.rb", "lib/moneta/memcache.rb", "lib/moneta/memory.rb", "lib/moneta/mongodb.rb", "lib/moneta/redis.rb", "lib/moneta/rufus.rb", "lib/moneta/s3.rb", "lib/moneta/sdbm.rb", "lib/moneta/tyrant.rb", "lib/moneta/voldemort.rb", "lib/moneta/xattr.rb", "lib/moneta/yaml.rb", "lib/moneta.rb"]
+  s.files = ["LICENSE", "README", "Rakefile", "TODO", "lib/moneta", "lib/moneta/basic_file.rb", "lib/moneta/berkeley.rb", "lib/moneta/cassandra.rb", "lib/moneta/couch.rb", "lib/moneta/datamapper.rb", "lib/moneta/file.rb", "lib/moneta/lmc.rb", "lib/moneta/memcache.rb", "lib/moneta/memory.rb", "lib/moneta/mongodb.rb", "lib/moneta/redis.rb", "lib/moneta/rufus.rb", "lib/moneta/s3.rb", "lib/moneta/sdbm.rb", "lib/moneta/tyrant.rb", "lib/moneta/voldemort.rb", "lib/moneta/xattr.rb", "lib/moneta/yaml.rb", "lib/moneta.rb"]
   s.homepage = %q{http://www.yehudakatz.com}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
