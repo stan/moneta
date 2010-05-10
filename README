@@ -17,6 +17,9 @@ Out of the box, it supports:
 * SDBM
 * Tokyo
 * CouchDB
+* MongoDB
+* YAML
+* Voldemort
 
 All stores support key expiration, but only memcache supports it natively. All other stores
 emulate expiration.
@@ -40,7 +43,7 @@ The API:
 
 #has_key?(key)::                alias for key?
 
-#store(key, value, options)::   same as []=, but you can supply an :expires_in option, 
+#store(key, value, options)::   same as []=, but you can supply an :expires_in option,
                                 which will specify a number of seconds before the key
                                 should expire. In order to support the same features
                                 across all stores, only full seconds are supported
