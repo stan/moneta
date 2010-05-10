@@ -5,7 +5,7 @@ require 'spec/rake/spectask'
 require 'date'
 
 GEM = "moneta"
-GEM_VERSION = "0.5.0"
+GEM_VERSION = "0.6.0"
 AUTHOR = "Yehuda Katz"
 EMAIL = "wycats@gmail.com"
 HOMEPAGE = "http://www.yehudakatz.com"
@@ -22,10 +22,10 @@ spec = Gem::Specification.new do |s|
   s.author = AUTHOR
   s.email = EMAIL
   s.homepage = HOMEPAGE
-  
+
   # Uncomment this to add a dependency
   # s.add_dependency "foo"
-  
+
   s.require_path = 'lib'
   s.autorequire = GEM
   s.files = %w(LICENSE README Rakefile TODO) + Dir.glob("{lib,specs}/**/*")
@@ -51,7 +51,7 @@ desc "Run all examples (or a specific spec with TASK=xxxx)"
 Spec::Rake::SpecTask.new('spec') do |t|
   t.spec_opts  = ["-cfs"]
   t.spec_files = begin
-    if ENV["TASK"] 
+    if ENV["TASK"]
       ENV["TASK"].split(',').map { |task| "spec/**/#{task}_spec.rb" }
     else
       FileList['spec/**/*_spec.rb']
