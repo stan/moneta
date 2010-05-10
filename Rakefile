@@ -4,8 +4,8 @@ require 'rubygems/specification'
 require 'spec/rake/spectask'
 require 'date'
 
-GEM = "moneta"
-GEM_VERSION = "0.6.0"
+GEM = "stan-moneta"
+GEM_VERSION = "0.6.0.1"
 AUTHOR = "Yehuda Katz"
 EMAIL = "wycats@gmail.com"
 HOMEPAGE = "http://www.yehudakatz.com"
