@@ -43,8 +43,7 @@ module Moneta
 
     def store(key, value, options = {})
       exp = options[:expires_in] ? (Time.now + options[:expires_in]) : nil
-      @cache.insert({ '_id' => key, 'data' => value, 'expires' => exp }) if !self.key?(key)
-      @cache.update({ '_id' => key }, { '_id' => key, 'data' => value, 'expires' => exp })
+      @cache.update({ '_id' => key }, { '_id' => key, 'data' => value, 'expires' => exp }, :upsert => true)
     end
 
     def update_key(key, options = {})
