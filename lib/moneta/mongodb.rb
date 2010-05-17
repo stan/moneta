@@ -1,5 +1,6 @@
 begin
   require "mongo"
+  include Mongo
 rescue LoadError
   puts "You need the mongo gem to use the MongoDB moneta store"
   exit
@@ -8,15 +9,15 @@ end
 module Moneta
   class MongoDB
     include Defaults
-    
+
     def initialize(options = {})
       options = {
         :host => ENV['MONGO_RUBY_DRIVER_HOST'] || 'localhost',
-        :port => ENV['MONGO_RUBY_DRIVER_PORT'] || XGen::Mongo::Driver::Mongo::DEFAULT_PORT,
+        :port => ENV['MONGO_RUBY_DRIVER_PORT'] || Connection::DEFAULT_PORT,
         :db => 'cache',
         :collection => 'cache'
       }.update(options)
-      conn = XGen::Mongo::Driver::Connection.new(options[:host], options[:port])
+      conn = Connection.new(options[:host], options[:port])
       @cache = conn.db(options[:db]).collection(options[:collection])
     end
 
@@ -25,7 +26,7 @@ module Moneta
     end
 
     def [](key)
-      res = @cache.find_first('_id' => key)
+      res = @cache.find_one('_id' => key)
       res = nil if res && res['expires'] && Time.now > res['expires']
       res && res['data']
     end
@@ -42,6 +43,7 @@ module Moneta
 
     def store(key, value, options = {})
       exp = options[:expires_in] ? (Time.now + options[:expires_in]) : nil
+      @cache.insert({ '_id' => key, 'data' => value, 'expires' => exp }) if !self.key?(key)
       @cache.update({ '_id' => key }, { '_id' => key, 'data' => value, 'expires' => exp })
     end
 
@@ -51,7 +53,7 @@ module Moneta
     end
 
     def clear
-      @cache.clear
+      @cache.drop
     end
   end
 end
